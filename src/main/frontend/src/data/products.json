@@ -1,0 +1,50 @@
+[
+  {
+    "id": 19,
+    "name": "qwe",
+    "unitCoast": 12,
+    "unitName": "in",
+    "discounts": [
+      {
+        "id": 14,
+        "actualFrom": 1305545798000,
+        "actualTo": 2305555798321,
+        "amountDiscount": 20
+      },
+      {
+        "id": 13,
+        "actualFrom": 1305545798000,
+        "actualTo": 1305545798000,
+        "amountDiscount": 10
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "name": "Хлеб",
+    "unitCoast": 3,
+    "unitName": "шт",
+    "discounts": [ ]
+  },
+  {
+    "id": 21,
+    "name": "chips",
+    "unitCoast": 12,
+    "unitName": "in",
+    "discounts": [ ]
+  },
+  {
+    "id": 22,
+    "name": "chips12",
+    "unitCoast": 12,
+    "unitName": "in",
+    "discounts": [ ]
+  },
+  {
+    "id": 24,
+    "name": "chocolate1",
+    "unitCoast": 12,
+    "unitName": "in",
+    "discounts": [ ]
+  }
+]

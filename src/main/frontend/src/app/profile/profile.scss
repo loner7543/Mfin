@@ -1,0 +1,48 @@
+.firstColumn{
+  height: 100%;
+  width: 20%;
+  background-color:#00b3ee;
+  float: left;
+}
+
+.listItems{
+  height: 80%;
+  background-color: pink;
+}
+
+.buttons{
+  height: 20%;
+  background-color: darkgray;
+}
+
+.bottonMargin{
+  margin-top: 10px;
+}
+
+
+.secondColumn{
+  height: 100%;
+  width: 60%;
+  background-color: red;
+  float: left;
+}
+
+.profileInfo{
+  height: 30%;
+  background-color: #1c699d;
+}
+
+.cruglogramme{
+  height: 50%;
+}
+
+.scaleSlider{
+  height: 20%;
+}
+.thirdColumn{
+  height:100%;
+  overflow-y: scroll;
+  width: 20%;
+  background-color: green;
+  float: right;
+}

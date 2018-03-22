@@ -1,0 +1,37 @@
+<h3>Профиль</h3>
+<div class="firstColumn">
+  <div class="listItems"></div>
+  <div class="buttons">
+   <input type="button" value="Рассчет профиля" ng-click="calcProfile()" class="btn btn-primary bottonMargin"><br>
+   <input type="button" value="Рассчитать круглограмму" ng-click="calculateCruglogramme()" class="btn btn-primary bottonMargin"><br>
+                                        <input type="button" value="Записать данные в файл" ng-click="uploadCruglogramme()" class="btn btn-primary bottonMargin" ><br>
+</div>
+</div>
+<div class="secondColumn">
+  <div class="profileInfo">
+              <label>Исходный файл для построения профиля:
+                   <select name="fileNameSelect" ng-model="profileParams.fileName">
+                     <option ng-repeat="filename in filenames"
+                             ng-value="option.id" class="panel panel-primary"> {{filename}}</option>
+                   </select>
+               </label><br>
+              <label>Радиус фотоприемника:{{profile.surfaceRadius}} </label><br>
+              <label>Смещение осветителя: {{profile.emitterYOffset}} </label><br>
+              <label>Zmin осветителя: {{profile.initialEmitterHeightPosition}}</label><br>
+              <label>Шаг осветителя:  {{profile.emitterHeightStep}}</label><br>
+              <label>Количество точек на сечение:  {{profile.discretePoints}}</label><br>
+              <label>Количество сечений:  {{profile.radialProfilesNumber}}</label><br>
+  </div>
+  <div class="cruglogramme"><canvas id="circleCanvas"></canvas></div>
+  <div class="scaleSlider">
+   <rzslider rz-slider-model="priceSlider"></rzslider>
+</div>
+</div>
+<div class="thirdColumn">
+<p>Настройки</p><br>
+ <p><input type="radio" ng-model="profileParams.mode" value="grann">Гранность</p>
+ <p><input type="radio" ng-model="profileParams.mode" value="voln">Волнистость</p><br>
+<ul>
+   <li ng-repeat="height in cruglogrammeHeights">{{height}}</li>
+     </ul>
+     </div>

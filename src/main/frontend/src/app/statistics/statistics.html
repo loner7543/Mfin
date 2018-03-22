@@ -1,0 +1,38 @@
+<h3>Статистика</h3>
+<div class="column left-column">
+<input type="button" value="Загрузить" ng-click="loadFile()">
+    <ul class="fileList">
+    <li ng-repeat=" filename in filrnames">
+    {{filename}}
+</li>
+    </ul><br>
+    <input type="button" value="Рассчитать статистику" ng-click="calculateMainStatistics()" class="btn btn-primary"><br>
+    <input type="button" value="Ручной ввод" ng-click="ujd()" class="btn btn-primary">
+</div>
+
+<div class="column right-column">
+    <div class="row first-row">
+        <div id="statBlock">
+            <label >Среднеквадратическое отклонение:   {{mainStatistics.sko}}</label><br>
+            <label>Систематическая составляющая: {{mainStatistics.syst}}</label><br>
+            <label>Суммарная погрешность: {{mainStatistics.psum}}</label><br>
+            <label>Доверительный интервал: {{mainStatistics.dov}}</label><br>
+            <label>Погрешность в точке: {{mainStatistics.sko}}</label><br>
+            <label>Ближайший к оптимальному профиль:  {{mainStatistics.minLengthBorderc}}</label><br>
+            <label>Среднее по выборке:  {{mainStatistics.mediumValue}}</label><br>
+        </div>
+    </div>
+    <div class="row second-row">
+        <div id="amplitudesHistogram">
+      <plotly plotly-data="graphData"plotly-layout="layout"></plotly>
+
+</div><br>
+        <input type="button" value="Записать амплитуды в файл" class="btn btn-primary" ng-click="writeAmplitudes()">
+        <input type="button" value="Считать амплитуды из файла" class="btn btn-primary" ng-click="readAmplitudes()">
+    </div>
+    <div class="row third-row">
+        <div id="int"></div><br>
+        <input type="button" value="Записать высоты в файл" class="btn btn-primary" ng-click="writeHeights()">
+        <input type="button" value="Считать высоты из файла" class="btn btn-primary" ng-click="readHeights()">
+    </div>
+</div>

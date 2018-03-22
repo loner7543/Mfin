@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:mvc="http://www.springframework.org/schema/mvc"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
+
+    <!--<mvc:resources mapping="/resources/**" location="/resources/"/>-->
+    <mvc:resources mapping="/**/*.css" location="/css" cache-period="604800"/>
+    <mvc:resources mapping="/**/*.ico" location="/images"/>
+    <mvc:resources mapping="/**/*.png" location="/images" cache-period="604800"/>
+    <mvc:resources mapping="/**/*.js" location="/js" cache-period="604800"/>
+    <mvc:resources mapping="/**/*.css.jsp" location="/css"/>
+    <mvc:resources mapping="/**/*-js.jsp" location="/js"/>
+
+    <!-- Application Message Bundle -->
+    <beans:bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basenames"
+                  value="/WEB-INF/classes/messages"/>
+        <property name="defaultEncoding" value="UTF-8" />
+        <property name="cacheSeconds" value="0"/>
+    </beans:bean>
+
+</beans:beans>
