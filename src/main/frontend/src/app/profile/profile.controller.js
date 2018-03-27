@@ -53,42 +53,15 @@
       var canvas = document.getElementById("circleCanvas");
       var ctx = canvas.getContext("2d");
       debugger;
-      var Xpoints = [];
-      Xpoints.push({
-        x:0,
-        y:canvas.height/2
-      });
-      for (var i = 0;i<canvas.width;i++){
-        if (i%3===0){
-          Xpoints.push({
-            x:i,
-            y:canvas.height/2
-          })
-        }
-      }
-
-      var Ypoints = [];
-      Ypoints.push({
-        x:canvas.width/2,
-        y:0
-      });
-      for (var j = 0;i<canvas.height;j++){
-        if (j%3===0){
-          Ypoints.push({
-            x:canvas.width/2,
-            y:j
-          })
-        }
-      }
-      //draw axis
+      //рисует пунктиром ось ОХ
       ctx.beginPath();
-      for(var k = 1; k<Xpoints.length; k++)
-      {
-        if((k%2)!==0){
-          ctx.moveTo(Xpoints[k-1].x,Xpoints[k-1].y);
-          ctx.lineTo(Xpoints[k].x,Xpoints[k].y);
-        }
-      }
+      ctx.setLineDash([5,15]);
+      ctx.moveTo(0,canvas.height/2);
+      ctx.lineTo(canvas.width,canvas.height/2);
+
+      //Рисует пунктиром ось ОY
+      ctx.moveTo(canvas.width/2,0);
+      ctx.lineTo(canvas.width/2,canvas.height);
       ctx.stroke();
       console.log("Done!");
 
