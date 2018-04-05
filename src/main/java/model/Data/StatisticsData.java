@@ -102,7 +102,9 @@ public class StatisticsData implements Serializable
     public double getMaxRelativeFrequency()
     {
         double max=Double.NEGATIVE_INFINITY;
-        for(int i=0; i<relativeFrequency.length; i++)if(relativeFrequency[i]>max)max=relativeFrequency[i];
+        for (double aRelativeFrequency : relativeFrequency){
+            if (aRelativeFrequency > max) max = aRelativeFrequency;
+        }
         return max;
     }
 

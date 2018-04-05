@@ -16,9 +16,9 @@ public class Data implements Serializable {
     private double amp() {
         double max = Double.NEGATIVE_INFINITY;
         double min = Double.POSITIVE_INFINITY;
-        for (int i = 0; i < H.length; i++) {
-            if (H[i] < min) min = H[i];
-            if (H[i] > max) max = H[i];
+        for (double aH : H) {
+            if (aH < min) min = aH;
+            if (aH > max) max = aH;
         }
         return (max - min);
     }

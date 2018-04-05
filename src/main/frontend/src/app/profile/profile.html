@@ -1,3 +1,4 @@
+<div class="flashMsg"><flash-message></flash-message></div>
 <h3>Профиль</h3>
 <div class="firstColumn">
   <div class="listItems"></div>
@@ -24,7 +25,10 @@
   </div>
   <div class="cruglogramme"><canvas id="circleCanvas" width="1000" height="500"></canvas></div>
   <div class="scaleSlider">
-   <rzslider rz-slider-model="priceSlider"></rzslider>
+   <rzslider
+      rz-slider-model="deflectionSlider"
+      rz-slider-options="sliderOptions">
+</rzslider>
 </div>
 </div>
 <div class="thirdColumn">

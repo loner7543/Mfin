@@ -3,6 +3,8 @@ package ru.ssau.controllers;
 import model.Calculation.Converter;
 import model.Data.Data;
 import model.Data.RawData;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,11 +16,14 @@ import service.FilenameService;
 import tools.FileUtils;
 import tools.StreamHelper;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
 import java.util.LinkedList;
 import java.util.List;
 
 @Controller
 public class ProfileController {
+    private static final Logger  logger= LoggerFactory.getLogger(ProfileController.class);
 
     private final FilenameService filenameService;
     private double[] heights;
@@ -64,28 +69,38 @@ public class ProfileController {
 выгружает высоты с грфика амплитуд на экране "Статистика"
  */
     @RequestMapping(value = "/uploadHeights", method = RequestMethod.GET)
-    public ResponseEntity writeProfile() {
-        ResponseEntity responseEntity;
-        try{
-            if (heights!=null){
-                int i = 1;
-                List<String> outH = new LinkedList<>();
-                for (double h:heights){
-                    outH.add(String.valueOf(i).concat("  ").concat(String.valueOf(h)));
-                    i++;
+    public void writeProfile(HttpServletResponse response) {
+        logger.debug("WORK!");
+        response.setContentType("application/octet-stream");
+        response.setHeader("Content-Disposition", "attachment;filename=data.txt");
+        try {
+            int i = 1;
+            List<String> outH = new LinkedList<>();
+            for (double h : heights) {
+                outH.add(String.valueOf(i).concat("  ").concat(String.valueOf(h)));
+                i++;
+            }
+            FileUtils.writeFile("data.txt", outH);
+            File file = new File(System.getProperty("user.dir"));
+            InputStream inputStream = null;
+            for (File file1:file.listFiles()){
+                if (file1.getName().equals("data.txt")){
+                    inputStream = new FileInputStream(file1);
                 }
-                FileUtils.writeFile("heights.txt",outH);
-                responseEntity = new ResponseEntity(HttpStatus.OK);
-                return responseEntity;
             }
-            else {
-                responseEntity = new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
-                return responseEntity;
+            response.setContentLength((int) file.length());
+            byte[] bytes = new byte[1024];
+            int len;
+            OutputStream os = response.getOutputStream();
+
+            while((len = inputStream.read(bytes))!= -1){
+                os.write(bytes, 0, len);
             }
-        }
-        catch (Exception e){
-            responseEntity = new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
-            return responseEntity;
+            os.flush();
+            os.close();
+
+        } catch (Exception e) {
+            System.out.println(e);
         }
 
     }
