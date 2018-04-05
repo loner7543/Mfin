@@ -133,4 +133,21 @@ public class IndexController {
         }
 
     }
+
+    @RequestMapping(value = "/manualInput", method = RequestMethod.POST)
+    public ResponseEntity manualInput(@RequestParam(value = StatisticsData.AMPLITUDES) String amplitudes){
+        try {
+        String [] arr = amplitudes.split(" ");
+        double[] data = new double[arr.length];
+        for (int i=0;i<arr.length;i++){
+            data[i]=Double.valueOf(arr[i]);
+        }
+        ConsiderStatistics consider=new ConsiderStatistics();
+            StatisticsData sDat=consider.createStatisticsData(data);
+            return new ResponseEntity(sDat,HttpStatus.OK);
+        } catch (LittleStatisticalDataException e) {
+            e.printStackTrace();
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }

@@ -32,7 +32,9 @@
         <input type="button" value="Считать амплитуды из файла" class="btn btn-primary" ng-click="readAmplitudes()">
     </div>
     <div class="row third-row">
-        <div id="int"></div><br>
+        <div id="intervalChart">
+           <plotly plotly-data="data"plotly-layout="multyLayout"></plotly>
+        </div><br>
         <input type="button" value="Записать высоты в файл" class="btn btn-primary" ng-click="writeHeights()">
         <input type="button" value="Считать высоты из файла" class="btn btn-primary" ng-click="readHeights()">
     </div>

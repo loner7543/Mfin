@@ -1,5 +1,6 @@
 
 package model.Data;
+import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -7,6 +8,9 @@ public class StatisticsData implements Serializable
 {
     private static double tx=2.17;
     private static double sq3=Math.sqrt(3);
+
+    @XmlTransient
+    public static final String AMPLITUDES="textAreaValues";
 
     private double point;
     private double avg;
@@ -22,9 +26,11 @@ public class StatisticsData implements Serializable
     private double levelTovalue;// уровень значимости, если -1,то гепотиза о нормальном законе распределения отклоняется
     private double minLengthBorderc;
     private double mediumValue;// среднее по выборке
+    private int[] M;
 
     public StatisticsData(double point,double avg,int closest,double sko,double[] arrayAmplitudes, ArrayList<Double> bordersFrequency,
-                          double minLengthBorderc, double[] relativeFrequency, double valueKxSquare, double levelTovalue,double mediumValue)
+                          double minLengthBorderc, double[] relativeFrequency, double valueKxSquare, double levelTovalue,
+                          double mediumValue,int[] m)
     {
         this.arrayAmplitudes=arrayAmplitudes;
         this.point=point;
@@ -40,6 +46,7 @@ public class StatisticsData implements Serializable
         this.valueKxSquare=valueKxSquare;
         this.levelTovalue=levelTovalue;
         this.mediumValue = mediumValue;
+        this.M = m;
     }
     public double getAvg()
     {
@@ -115,5 +122,13 @@ public class StatisticsData implements Serializable
 
     public void setMediumValue(double mediumValue) {
         this.mediumValue = mediumValue;
+    }
+
+    public int[] getM() {
+        return M;
+    }
+
+    public void setM(int[] m) {
+        M = m;
     }
 }
