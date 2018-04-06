@@ -5,7 +5,7 @@
     .controller('StatisticsController', StatisticsController);
 
   /** @ngInject */
-  function StatisticsController($scope, $http, ngDialog, UtilsFunctionsFactory) {
+  function StatisticsController($scope, $http, ngDialog, UtilsFunctionsFactory,connectionService) {
     var vm = this;
     $scope.inputData={
       textAreaValues:""
@@ -14,7 +14,7 @@
     $scope.calculateMainStatistics = function () {
       $http({
         method: "POST",
-        url: "http://localhost:8080/krugstat/rest/calculate"
+        url: connectionService.getUrl()+"/calculate"
       }).then(function (resp) {
           console.log("Success resp1", resp.data)
           $scope.mainStatistics = resp.data;
@@ -94,7 +94,7 @@
     $scope.writeAmplitudes = function () {
       $http({
         method: "GET",
-        url: "http://localhost:8080/krugstat/rest/uploadAmplitudes",
+        url: connectionService.getUrl()+"/uploadAmplitudes",
         headers: {
           'Accept': 'application/json, */*'
         }
@@ -116,10 +116,9 @@
     };
 
     $scope.manualInputHandler = function(scope){
-      debugger;
       $http({
         method: "POST",
-        url: "http://localhost:8080/krugstat/rest/manualInput",
+        url: connectionService.getUrl()+"/manualInput",
         params: $scope.inputData
       }).then(function (resp) {
           console.log("Success resp1", resp);
@@ -140,7 +139,7 @@
       debugger;
       $http({
         method: "GET",
-        url: "http://localhost:8080/krugstat/rest/uploadHeights",
+        url: connectionService.getUrl()+"/uploadHeights",
         headers: {
           'Accept': 'application/json, */*'
         }
@@ -160,7 +159,7 @@
     $scope.loadFile = function () {
       $http({
         method: "GET",
-        url: "http://localhost:8080/krugstat/rest/loadFiles",
+        url: connectionService.getUrl()+"/loadFiles",
         headers: {
           'Accept': 'application/json, */*'
         }
