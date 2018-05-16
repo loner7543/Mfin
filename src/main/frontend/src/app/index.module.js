@@ -21,8 +21,7 @@
         if (mm < 10) {
           mm = '0' + mm;
         }
-        var formattedDate = dd + '.' + mm + '.' + yyyy;
-        return formattedDate;
+        return dd + '.' + mm + '.' + yyyy;
         // moment.lang('ru');
         // return moment(value).format('dddd, MMMM DD YYYY')
       },

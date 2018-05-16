@@ -5,7 +5,7 @@
     .controller('StatisticsController', StatisticsController);
 
   /** @ngInject */
-  function StatisticsController($scope, $http, ngDialog, UtilsFunctionsFactory,connectionService) {
+  function StatisticsController($scope, $http, ngDialog, UtilsFunctionsFactory) {
     var vm = this;
     $scope.inputData={
       textAreaValues:""
@@ -14,9 +14,9 @@
     $scope.calculateMainStatistics = function () {
       $http({
         method: "POST",
-        url: connectionService.getUrl()+"/calculate"
+        url: "http://localhost:8080/krugstat/rest/calculate"
       }).then(function (resp) {
-          console.log("Success resp1", resp.data)
+          console.log("Success resp1", resp.data);
           $scope.mainStatistics = resp.data;
           drawAmplitudes(resp);
           drawIntervalChart($scope.mainStatistics);
@@ -94,7 +94,7 @@
     $scope.writeAmplitudes = function () {
       $http({
         method: "GET",
-        url: connectionService.getUrl()+"/uploadAmplitudes",
+        url: "http://localhost:8080/krugstat/rest/uploadAmplitudes",
         headers: {
           'Accept': 'application/json, */*'
         }
@@ -118,7 +118,7 @@
     $scope.manualInputHandler = function(scope){
       $http({
         method: "POST",
-        url: connectionService.getUrl()+"/manualInput",
+        url: "http://localhost:8080/krugstat/rest/manualInput",
         params: $scope.inputData
       }).then(function (resp) {
           console.log("Success resp1", resp);
@@ -139,7 +139,7 @@
       debugger;
       $http({
         method: "GET",
-        url: connectionService.getUrl()+"/uploadHeights",
+        url: "http://localhost:8080/krugstat/rest/uploadHeights",
         headers: {
           'Accept': 'application/json, */*'
         }
@@ -159,7 +159,7 @@
     $scope.loadFile = function () {
       $http({
         method: "GET",
-        url: connectionService.getUrl()+"/loadFiles",
+        url: "http://localhost:8080/krugstat/rest/loadFiles",
         headers: {
           'Accept': 'application/json, */*'
         }

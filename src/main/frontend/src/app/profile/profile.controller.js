@@ -4,7 +4,7 @@
     .controller('ProfileController', ProfileController);
 
   /** @ngInject */
-  function ProfileController($scope, $http,UtilsFunctionsFactory,files, connectionService) {
+  function ProfileController($scope, $http,UtilsFunctionsFactory,files) {
     $scope.deflectionSlider = 100;
     $scope.sliderOptions = {
       floor: 0,
@@ -29,7 +29,7 @@
       console.log($scope.profileParams.fileName)
       $http({
         method: "POST",
-        url: connectionService.getUrl()+"/calculateProfile",
+        url: "http://localhost:8080/krugstat/rest/calculateProfile",
         params:$scope.profileParams
       }).then(function (resp) {
           console.log("Профиль", resp);
@@ -45,7 +45,7 @@
       console.log($scope.profileParams.mode);
       $http({
         method: "POST",
-        url: connectionService.getUrl()+"/calculateCluglogramme",
+        url: "http://localhost:8080/krugstat/rest/calculateCluglogramme",
         params:$scope.profileParams
       }).then(function (resp) {
           console.log("высоты круглограммы", resp);

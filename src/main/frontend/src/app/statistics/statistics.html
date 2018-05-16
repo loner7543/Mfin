@@ -1,14 +1,14 @@
 <div class="flashMsg"><flash-message></flash-message></div>
 <h3>Статистика</h3>
 <div class="column left-column">
-<input type="button" value="Загрузить" ng-click="loadFile()">
+<input type="button" class="btn btn-primary" value="Загрузить файлы" ng-click="loadFile()">
     <ul class="fileList">
     <li ng-repeat=" filename in filrnames">
     {{filename}}
 </li>
     </ul><br>
     <input type="button" value="Рассчитать статистику" ng-click="calculateMainStatistics()" class="btn btn-primary"><br>
-    <input type="button" value="Ручной ввод" ng-click="ujd()" class="btn btn-primary">
+    <input type="button" value="Ручной ввод" ng-click="ujd()" class="btn btn-primary manualInputBtn">
 </div>
 
 <div class="column right-column">
