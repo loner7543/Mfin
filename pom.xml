@@ -26,23 +26,6 @@
                 </property>
             </activation>
         </profile>
-
-        <!--<profile>-->
-            <!--<id>postgres</id>-->
-            <!--<dependencies>-->
-                <!--&lt;!&ndash;<dependency>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<groupId>org.postgresql</groupId>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<artifactId>postgresql</artifactId>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<version>42.2.1</version>&ndash;&gt;-->
-                <!--&lt;!&ndash;</dependency>&ndash;&gt;-->
-                <!--<dependency>-->
-                    <!--<groupId>org.apache.tomcat</groupId>-->
-                    <!--<artifactId>tomcat-jdbc</artifactId>-->
-                    <!--<version>9.0.8</version>-->
-                <!--</dependency>-->
-            <!--</dependencies>-->
-        <!--</profile>-->
-
         <profile>
             <id>heroku</id>
             <build>
@@ -81,7 +64,7 @@
                             </archive>
                             <warName>${project.build.finalName}</warName>
                             <containerConfigXML>${app-context-file}</containerConfigXML>
-                            <webXml>${project-webxml}</webXml>
+                            <webXml>./src/etc/web.xml</webXml>
                         </configuration>
                     </plugin>
                 </plugins>
