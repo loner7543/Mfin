@@ -1,4 +1,9 @@
 package model.Exception;
+
+/*
+ * @ author Manukhin A.V.
+ *
+ */
 public class LittleStatisticalDataException extends Exception
 {
      public LittleStatisticalDataException()

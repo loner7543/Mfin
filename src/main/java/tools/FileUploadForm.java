@@ -4,8 +4,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
-/**
- * Created by User on 011 11.07.17.
+/*
+ * @ author Manukhin A.V.
  */
 public class FileUploadForm {
 

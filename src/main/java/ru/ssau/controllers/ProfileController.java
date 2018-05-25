@@ -21,6 +21,9 @@ import java.io.*;
 import java.util.LinkedList;
 import java.util.List;
 
+/*
+ * @ author Manukhin A.V.
+ */
 @Controller
 public class ProfileController {
     private static final Logger  logger= LoggerFactory.getLogger(ProfileController.class);
@@ -34,7 +37,7 @@ public class ProfileController {
     }
 
     /*
-* Рассчитывает высоты в зависимости от выбранного режима настройки
+    * Рассчитывает высоты в зависимости от выбранного режима настройки
 * */
     @RequestMapping(value = "/calculateCluglogramme", method = RequestMethod.POST)
     public ResponseEntity calculateCruglogramme(@RequestParam(value = RawData.FILENAME) String fileName,
@@ -66,7 +69,7 @@ public class ProfileController {
     }
 
     /*
-выгружает высоты с грфика амплитуд на экране "Статистика"
+    выгружает высоты с грфика амплитуд на экране "Статистика"
  */
     @RequestMapping(value = "/uploadHeights", method = RequestMethod.GET)
     public void writeProfile(HttpServletResponse response) {

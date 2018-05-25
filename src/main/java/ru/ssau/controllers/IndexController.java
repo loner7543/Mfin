@@ -24,6 +24,9 @@ import java.io.PrintWriter;
 import java.util.LinkedList;
 import java.util.List;
 
+/*
+ * @ author Manukhin A.V.
+ */
 @Controller
 public class IndexController {
     private static final Logger logger = LoggerFactory.getLogger(IndexController.class);
@@ -36,6 +39,9 @@ public class IndexController {
         this.filenameService = filenameService;
     }
 
+    /*
+    * Обрабатывает запрос расчета статистики
+    * */
     @RequestMapping(value = "/calculate", method = RequestMethod.POST)
     public ResponseEntity   calculateStatistics() {
         if (filenameService.getRawData() != null && !filenameService.getRawData().isEmpty()) {
@@ -72,6 +78,9 @@ public class IndexController {
 //
 //    }
 
+    /*
+    * Обрабатывает запрос загрузки файлов
+    * */
     @RequestMapping(value = "/loadFiles", method = RequestMethod.GET)
     public ResponseEntity  loadFiles(){
         ResponseEntity responseEntity;
@@ -89,6 +98,9 @@ public class IndexController {
 
     }
 
+    /*
+    * Отдае имена файлов для компонента
+    * */
     @RequestMapping(value = "/getFileNames", method = RequestMethod.GET)
     public ResponseEntity getFileNames(){
         if (!filenameService.getFileNames().isEmpty()){
@@ -134,6 +146,9 @@ public class IndexController {
 
     }
 
+    /*
+    * Обрабатывет ручной ввод статистики
+    * */
     @RequestMapping(value = "/manualInput", method = RequestMethod.POST)
     public ResponseEntity manualInput(@RequestParam(value = StatisticsData.AMPLITUDES) String amplitudes){
         try {

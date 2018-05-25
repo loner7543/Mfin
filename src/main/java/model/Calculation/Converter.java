@@ -4,6 +4,9 @@ package model.Calculation;
 import model.Data.RawData;
 import model.Data.Data;
 
+/*
+ * @ author Manukhin A.V.
+ */
 public class Converter {
     //исходные данные
     private int nfi;                   //кол-во точек на сечение

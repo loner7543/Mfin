@@ -11,7 +11,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
+/*
+ * @ author Manukhin A.V.
+ */
 public class ConsiderStatistics //extends Thread
 {
     private ArrayList<Data> dataSet;
@@ -49,6 +51,9 @@ public class ConsiderStatistics //extends Thread
         return new StatisticsData(0, avg, 0, sko, arrayAmplitudes, borders, minLengthBorderc, relativeFrequency, KxSquare, levelTovalue, mediumValue,M);
     }
 
+    /*
+    * Расчитывает статистику по набору файлов
+    * */
     public StatisticsData createStatisticsData() throws LittleStatisticalDataException {
         double[] arrayAmplitudes = new double[dataSet.size()];
         for (int i = 0; i < dataSet.size(); i++) arrayAmplitudes[i] = dataSet.get(i).getAmp();

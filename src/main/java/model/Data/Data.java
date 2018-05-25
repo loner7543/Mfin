@@ -3,6 +3,9 @@ package model.Data;
 
 import java.io.Serializable;
 
+/*
+ * @ author Manukhin A.V.
+ */
 public class Data implements Serializable {
     private double amp;
     private double[] H;

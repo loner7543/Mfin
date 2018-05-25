@@ -4,6 +4,9 @@ import model.Data.RawData;
 import model.Exception.FileFormatException;
 import java.io.*;
 
+/*
+ * @ author Manukhin A.V.
+ */
 public class ReaderRawData {
     //Читает строку и производит первоначальную обработку
     private static String readLine(BufferedReader in) throws IOException,Exception

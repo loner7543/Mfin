@@ -4,6 +4,7 @@ package model.Data;
 import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
 
+
 public class RawData implements Serializable
 {
     @XmlTransient

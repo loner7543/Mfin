@@ -7,6 +7,9 @@ import service.DrawService;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+ * @ author Manukhin A.V.
+ */
 @Service
 public class DrawServiceImpl implements DrawService {
     private double[] H=null;

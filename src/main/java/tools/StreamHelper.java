@@ -5,6 +5,9 @@ import model.Data.RawData;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/*
+ * @ author Manukhin A.V.
+ */
 public class StreamHelper {
 
     public static List<RawData> getRawDataByFileName(String fileName,List<RawData> data){

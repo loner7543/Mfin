@@ -8,6 +8,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+ * @ author Manukhin A.V.
+ */
 public interface FilenameService {
 
     List<String> readDATFiles(String path) throws IOException, FileFormatException;

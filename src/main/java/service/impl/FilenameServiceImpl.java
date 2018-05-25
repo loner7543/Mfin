@@ -13,6 +13,9 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+ * @ author Manukhin A.V.
+ */
 @Service
 public class FilenameServiceImpl implements FilenameService {
     private List<String> fileNames;

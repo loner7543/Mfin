@@ -9,6 +9,9 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+/*
+ * @ author Manukhin A.V.
+ */
 public class FileUtils {
     public static void writeFile(String path ,List<String> data) throws IOException {
         Path file = Paths.get(path);

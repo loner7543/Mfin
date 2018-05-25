@@ -4,6 +4,9 @@ import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/*
+ * @ author Manukhin A.V.
+ */
 public class StatisticsData implements Serializable
 {
     private static double tx=2.17;

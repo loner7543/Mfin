@@ -1,5 +1,8 @@
 package model.Auxiliary;
 
+/*
+* @ author Manukhin A.V.
+*/
 public class CounterNumerals
 {
     public static int counterNumerals(double number)

@@ -4,6 +4,9 @@ import model.Point;
 
 import java.util.List;
 
+/*
+ * @ author Manukhin A.V.
+ */
 public interface DrawService {
     public List<Point> getListAxesPoints(double[] borderedFrrquency, int height, int indentionOnWidth, int width);
 
