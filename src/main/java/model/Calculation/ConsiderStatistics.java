@@ -13,6 +13,7 @@ import java.util.List;
 
 /*
  * @ author Manukhin A.V.
+ * Методы для расчета ститистических показателей
  */
 public class ConsiderStatistics //extends Thread
 {

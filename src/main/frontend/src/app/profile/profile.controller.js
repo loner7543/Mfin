@@ -9,10 +9,13 @@
     $scope.sliderOptions = {
       floor: 0,
       step:1,
-      id:"scaleSlider"
-      // onChange:function (value) {
-      //   console.log(value);
-      // }
+      id:"scaleSlider",
+      onEnd:function () {
+       var selectedValue =  $scope.deflectionSlider;
+        var canvas = document.getElementById("circleCanvas");
+        var ctx = canvas.getContext("2d");
+        drawDeflection(ctx,canvas,$scope.deflectionArray,selectedValue);
+      }
     };
     $scope.filenames=files.data;
     var vm = this;
@@ -22,7 +25,7 @@
       mode:""
     };
 
-    $scope.deflectionArray = new Array(360);
+    $scope.deflectionArray=[];
     $scope.scale=0.0;
 
     $scope.calcProfile=function () {
@@ -76,34 +79,18 @@
       ctx.beginPath();
       ctx.setLineDash([]);
       var radius = scalling(minSize/2,canvas);
+      $scope.circleRadius = radius;
       ctx.arc(canvas.width/2,canvas.height/2,radius,0,360);
       ctx.stroke();
 
       ctx.beginPath();
-      drawDeflection(canvas,ctx,$scope.deflectionArray);
+     // drawDeflection(canvas,ctx,$scope.deflectionArray);
       ctx.stroke();
-
-
       console.log("Done!");
-
-
-      // $http({
-      //   method: "POST",
-      //   url: "http://localhost:8080/krugstat/rest/getCirclePoints",
-      //   params:{
-      //     radius:1
-      //   }
-      // }).then(function (resp) {
-      //     console.log("Точки", resp);
-      //     $scope.cruglogrammeHeights=resp.data;
-      //
-      //   },
-      //   function (result) {
-      //     console.error(result, result.data);
-      //   });
     };
 
      function scalling (radius,canvas) {
+       debugger;
       var maxHeight = 0;
       var scale=canvas.width/4;
       for (var i = 0;i<$scope.cruglogrammeHeights.length;i++){
@@ -115,11 +102,36 @@
       return (radius-Math.round(maxHeight))-2;
      }
 
-     function drawDeflection(context,canvas,deflectionArray) {
+     function drawDeflection(context,canvas,deflectionArray, sliderValue) {
+       var width = canvas.width;
+       var height = canvas.height;
 
+       var listPoint=[];
+      if(sliderValue==0){
+
+      }
+      else {
+        debugger;
+        for (var i = 0;i<360;i++){
+          var point = {
+            x:Math.round(($scope.circleRadius+Math.round( $scope.deflectionArray[i]))*Math.cos(i*2*Math.PI/360))+width/2,
+            y:Math.round(($scope.circleRadius+Math.round( $scope.deflectionArray[i]))*Math.sin(i*2*Math.PI/360))+height/2
+          };
+          listPoint.push(point);
+        }
+        listPoint.push(listPoint[0]);
+        context.strokeStyle="#2222F8";
+        context.beginPath();
+        context.moveTo(listPoint[0].x,listPoint[0].y);
+        for (var i = 0;i<360;i++){
+         context.lineTo(listPoint[i].x, listPoint[i].y);
+        }
+        context.stroke();
+      }
      }
 
      function drawAxis(ctx,canvas) {
+       //Рисует пунктиром ось ОX
        ctx.beginPath();
        ctx.setLineDash([5,15]);
        ctx.moveTo(0,canvas.height/2);
